@@ -34,5 +34,8 @@ Thumbs.db
 htmlcov/
 .pytest_cache/
 
+
+alembic.ini
+
 # Migrations (optional, if using Alembic and want to exclude them)
 # migrations/
