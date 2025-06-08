@@ -191,5 +191,111 @@ sequenceDiagram
     FastAPI->>User: Send JSON response
 
 
+# Chapter 3: AI Assistant
+
+The `lib.ai` system integrates an AI-powered assistant using the `/chat` API routes. This assistant leverages a custom `ChatService` to interpret user queries and provide intelligent responses based on library data.
+
+## Endpoints
+
+### POST `/chat/`
+
+A non-streaming endpoint for handling a single user message and returning an AI-generated reply.
+
+```json
+{
+  "message": "How many books are overdue?",
+  "session_id": "abc123"
+}
+```
+
+### POST `/chat/stream`
+
+Streams the AI-generated response word-by-word for real-time feedback.
+
+### GET `/chat/history/{session_id}`
+
+Fetches the conversation history of a particular session.
+
+### DELETE `/chat/history/{session_id}`
+
+Clears the stored conversation context of a session.
+
+### GET `/chat/test`
+
+Runs a few predefined test queries to verify the AI assistant's functionality.
+
+> **Note:** In production, replace in-memory session storage with Redis or a database.
+
+---
+
+# Chapter 4: Environment Setup (`.env` File)
+
+To run the system properly, set the following environment variables in a `.env` file:
+
+```env
+DATABASE_URL=postgresql+asyncpg://clouddb(add own)/defaultdb
+
+SECRET_KEY=add_the_secret_key
+ACCESS_TOKEN_EXPIRE_MINUTES=30
+
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your_email@gmail.com
+SMTP_PASSWORD=your_gmail_app_password
+EMAIL_FROM=your_email@gmail.com
+EMAIL_FROM_NAME=Library Notification System
+```
+
+These are used for:
+
+* Connecting to the database
+* Generating and verifying JWT tokens
+* Sending notification emails
+
+---
+
+# Chapter 5: Running the Application
+
+To run the `lib.ai` application:
+
+## Step 1: Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+## Step 2: Set Environment Variables
+
+Create a `.env` file as shown in Chapter 4.
+
+## Step 3: Launch the FastAPI Server
+
+```bash
+uvicorn main:app --reload
+```
+
+## Server Features
+
+* Automatically creates database tables using `create_tables()`
+* Starts a background scheduler using `SchedulerService`
+* Includes routers for:
+
+  * Authentication
+  * Books
+  * Issues
+  * Students
+  * Notifications
+  * AI Assistant (`/chat`)
+
+## Available Routes
+
+* `/docs` – Swagger UI for interactive API docs
+* `/health` – API and scheduler health check
+
+---
+
+These chapters document the database, schema, AI assistant integration, environment setup, and application launch process in `lib.ai`.
+
+
 
 
