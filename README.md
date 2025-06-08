@@ -296,6 +296,13 @@ uvicorn main:app --reload
 
 These chapters document the database, schema, AI assistant integration, environment setup, and application launch process in `lib.ai`.
 
+Visit:
+
+- [http://localhost:8000/docs](http://localhost:8000/docs) for interactive **Swagger API documentation**.
+
+- [http://localhost:8000/redoc](http://localhost:8000/redoc) for ReDoc documentation.
+
+- [http://localhost:8000/health](http://localhost:8000/health) for a health check endpoint.
 
 
 
