@@ -1,0 +1,38 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Environment variables and secrets
+.env
+.env.*
+
+# Logs and cache
+*.log
+*.sqlite3
+*.db
+*.pid
+*.cache/
+*.coverage
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Pytest / coverage
+.cache/
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Migrations (optional, if using Alembic and want to exclude them)
+# migrations/
